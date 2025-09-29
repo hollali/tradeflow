@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
+import { LogOut } from "lucide-react";
 
 const UserDropdown = () => {
   const router = useRouter();
@@ -42,20 +43,30 @@ const UserDropdown = () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="text-gray-400">
-        <div className="flex relative items-center gap-3 py-2">
-          <Avatar className="w-10 h-10">
-            <AvatarImage src="https://github.com/shadcn.png" />
-            <AvatarFallback className="bg-yellow-500 text-yellow-900 text-sm font-bold">
-              {user.name.charAt(0)}
-            </AvatarFallback>
-          </Avatar>
-          <div className="flex flex-col">
-            <span className="text-base font-medium text-gray-400">
-              {user.name}
-            </span>
-            <span className="text-sm text-gray-500">{user.email}</span>
+        <DropdownMenuLabel>
+          <div className="flex relative items-center gap-3 py-2">
+            <Avatar className="w-10 h-10">
+              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarFallback className="bg-yellow-500 text-yellow-900 text-sm font-bold">
+                {user.name.charAt(0)}
+              </AvatarFallback>
+            </Avatar>
+            <div className="flex flex-col">
+              <span className="text-base font-medium text-gray-400">
+                {user.name}
+              </span>
+              <span className="text-sm text-gray-500">{user.email}</span>
+            </div>
           </div>
-        </div>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator className="bg-gray-600" />
+        <DropdownMenuItem
+          onClick={handleSignOut}
+          className="text-gray-100 text-md font-medium focus:bg-transparent focus:text-yellow-500 transition-colors cursor-pointer hover:bg-yellow-500"
+        >
+          <LogOut className="mr-2 h-4 w-4" />
+          Sign out
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
