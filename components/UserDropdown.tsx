@@ -34,6 +34,12 @@ const UserDropdown = () => {
               {user.name.charAt(0)}
             </AvatarFallback>
           </Avatar>
+          <div className="hidden md:flex flex-col items-start">
+            <span className="text-base font-medium text-gray-400">
+              {user.name}
+            </span>
+            <span className="text-sm text-gray-500">{user.email}</span>
+          </div>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
